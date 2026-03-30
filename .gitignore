@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# YOLO model weights (auto-downloaded at runtime)
+*.pt
+
+# Log files
+*.log
+
+# Detection image captures
+rollator_detections/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
