@@ -1,6 +1,6 @@
 # Günther Track — Augsburg Rollator Detector
 
-Monitors live webcam streams from Augsburg's city center and detects people using rollators (wheeled walkers). When a rollator is spotted, the image is saved and an optional Signal notification is sent. The half-ready tool was vibe-coded with Claude 4.5 rather fast, as we were searching for a missing person with a rollator. I will not be further maintained by BongoKing, but I thought it was share-worthy as someone might get inspired by it.
+Monitors live webcam streams from Augsburg's city center and detects people using rollators (wheeled walkers). When a rollator is spotted, the image is saved and an optional Signal notification is sent. The half-ready tool was vibe-coded with Claude 4.5 rather fast, as we were searching for a missing person with a rollator. I will not be further maintained by BongoKing, but I thought it was share-worthy as someone might get inspired by it. At the moment I'm not 100% sure if the tracker really works, but it was able to track correctly multiple other things like the "Tram".
 
 ## Webcams
 
@@ -15,20 +15,20 @@ Choose your engine via the `--engine` flag:
 
 |Engine|Cost|Requirements|Accuracy|
 |-|-|-|-|
-|`claude`|Paid (Anthropic API)|`ANTHROPIC\\\_API\\\_KEY`|High — Claude understands "rollator" directly|
-|`yolo`|Free (runs locally)|CPU or GPU|Medium — heuristic based on COCO object classes|
+|`claude`|Paid (Anthropic API)|`ANTHROPIC\\\\\\\_API\\\\\\\_KEY`|Medium — Claude understands "rollator" directly|
+|`yolo`|Free (runs locally)|CPU or GPU|Low — heuristic based on COCO object classes|
 
 ## Installation
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR\\\_USERNAME/guenther\\\_track.git
-cd guenther\\\_track
+git clone https://github.com/YOUR\\\\\\\_USERNAME/guenther\\\\\\\_track.git
+cd guenther\\\\\\\_track
 
 # Create a virtual environment (recommended)
 python -m venv venv
 source venv/bin/activate   # Linux/macOS
-venv\\\\Scripts\\\\activate      # Windows
+venv\\\\\\\\Scripts\\\\\\\\activate      # Windows
 
 # Install dependencies
 pip install -r requirements.txt
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 # Claude mode only
 pip install anthropic
 
-# YOLO mode only (downloads \\\~6 MB model on first run)
+# YOLO mode only (downloads \\\\\\\~6 MB model on first run)
 pip install ultralytics Pillow
 
 # Live preview window (--show)
@@ -53,16 +53,16 @@ pip install opencv-python
 
 ```bash
 # Set your API key
-export ANTHROPIC\\\_API\\\_KEY="sk-ant-..."          # Linux/macOS
-$env:ANTHROPIC\\\_API\\\_KEY = "sk-ant-..."          # PowerShell
+export ANTHROPIC\\\\\\\_API\\\\\\\_KEY="sk-ant-..."          # Linux/macOS
+$env:ANTHROPIC\\\\\\\_API\\\\\\\_KEY = "sk-ant-..."          # PowerShell
 
-python rollator\\\_detector.py --engine claude
+python rollator\\\\\\\_detector.py --engine claude
 ```
 
 ### YOLO engine (free, offline)
 
 ```bash
-python rollator\\\_detector.py --engine yolo
+python rollator\\\\\\\_detector.py --engine yolo
 ```
 
 ### Live preview window
@@ -71,10 +71,10 @@ Add `--show` to open a live window displaying both camera feeds side-by-side wit
 
 ```bash
 # YOLO + live window (bounding boxes around every detected object)
-python rollator\\\_detector.py --engine yolo --show
+python rollator\\\\\\\_detector.py --engine yolo --show
 
 # Claude + live window (status overlay — no bounding boxes since Claude doesn't return coordinates)
-python rollator\\\_detector.py --engine claude --show
+python rollator\\\\\\\_detector.py --engine claude --show
 ```
 
 **What you'll see:**
@@ -92,7 +92,7 @@ python rollator\\\_detector.py --engine claude --show
 ### All options
 
 ```
-python rollator\\\_detector.py --help
+python rollator\\\\\\\_detector.py --help
 
 options:
   --engine {claude,yolo}   Detection engine (default: claude)
@@ -106,8 +106,8 @@ options:
 Requires [signal-cli](https://github.com/AsamK/signal-cli) to be installed and registered.
 
 ```bash
-export SIGNAL\\\_SENDER="+491234567890"
-export SIGNAL\\\_RECIPIENT="+490987654321"
+export SIGNAL\\\\\\\_SENDER="+491234567890"
+export SIGNAL\\\\\\\_RECIPIENT="+490987654321"
 ```
 
 When a rollator is detected, you'll receive a Signal message with the camera name, timestamp, confidence, and the captured image as an attachment.
@@ -115,8 +115,8 @@ When a rollator is detected, you'll receive a Signal message with the camera nam
 ## Output
 
 * **Console**: Detections are shown in **red**, clear results in **green**
-* **Log file**: `rollator\\\_detector.log` — full timestamped log of every check
-* **Saved images**: `rollator\\\_detections/` — JPEGs saved when a rollator is detected
+* **Log file**: `rollator\\\\\\\_detector.log` — full timestamped log of every check
+* **Saved images**: `rollator\\\\\\\_detections/` — JPEGs saved when a rollator is detected
 * **Live window** (`--show`): Both cameras side-by-side with bounding boxes / overlays
 
 ## How YOLO detection works
